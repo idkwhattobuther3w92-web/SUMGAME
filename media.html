@@ -1,0 +1,452 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Elijah Games - The Macaruther movies</title>
+    <style>
+        /* super coolio */
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: #222;
+            /* Subtle scanline texture */
+            background-image: radial-gradient(#333 15%, transparent 15%);
+            background-size: 4px 4px;
+            font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
+            color: #eee;
+        }
+
+        /* NEW BANNER HERE */
+        .request-banner {
+            background: #00d4ff;
+            color: #000;
+            text-align: center;
+            padding: 10px;
+            font-weight: bold;
+            font-family: 'Arial Black', sans-serif;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            box-shadow: 0 2px 15px rgba(0, 212, 255, 0.5);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .request-banner a {
+            color: #000;
+            text-decoration: underline;
+            transition: 0.3s;
+        }
+
+        .request-banner a:hover {
+            color: #fff;
+            text-shadow: 0 0 10px #fff;
+        }
+
+        /* Pulse Animation */
+        @keyframes pulse {
+            0% { opacity: 1; }
+            50% { opacity: 0.8; }
+            100% { opacity: 1; }
+        }
+        .request-banner { animation: pulse 2s infinite; }
+
+        header {
+            /* The blue thing */
+            background: linear-gradient(to bottom, #222 0%, #111 50%, #000 50%, #111 100%);
+            padding: 30px;
+            border-bottom: 4px solid #00d4ff;
+            text-align: center;
+            box-shadow: 0px 5px 15px rgba(0,0,0,0.8);
+        }
+
+        header h1 {
+            margin: 0;
+            font-family: 'Arial Black', Gadget, sans-serif;
+            font-size: 3rem;
+            text-transform: uppercase;
+            background: linear-gradient(to bottom, #fff 0%, #00d4ff 50%, #008fb3 50%, #00d4ff 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            filter: drop-shadow(3px 3px 0px #000);
+        }
+
+        nav {
+            background: #111;
+            padding: 12px;
+            text-align: center;
+            border-bottom: 1px solid #333;
+            box-shadow: inset 0 -2px 5px rgba(0,0,0,0.5);
+        }
+
+        nav a {
+            color: #aaa;
+            text-decoration: none;
+            padding: 5px 20px;
+            font-weight: bold;
+            font-size: 13px;
+            text-transform: uppercase;
+            transition: 0.2s;
+        }
+
+        nav a:hover {
+            color: #00d4ff;
+            text-shadow: 0 0 8px rgba(0, 212, 255, 0.6);
+        }
+
+        .container {
+            width: 960px;
+            margin: 30px auto;
+            background: #1a1a1a;
+            padding: 25px;
+            border-radius: 15px;
+            border: 1px solid #333;
+            box-shadow: 0 0 40px #000;
+        }
+
+        h2 {
+            font-family: 'Arial Black', sans-serif;
+            color: #00d4ff;
+            text-transform: uppercase;
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+            border-left: 5px solid #00d4ff;
+            padding-left: 15px;
+        }
+
+        .sidebar-ad {
+            background: #000;
+            color: #00d4ff;
+            padding: 15px;
+            text-align: center;
+            border: 2px dashed #00d4ff;
+            margin-bottom: 25px;
+            font-family: monospace;
+            font-weight: bold;
+            font-size: 14px;
+            opacity: 0.7;
+        }
+
+        .game-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 25px;
+            justify-content: flex-start;
+            margin-top: 20px;
+        }
+
+        /* the Game Card */
+        .game-card {
+            width: 170px;
+            background: linear-gradient(to bottom, #333 0%, #222 100%);
+            padding: 12px;
+            border-radius: 10px;
+            border: 1px solid #444;
+            text-align: center;
+            box-shadow: 5px 5px 10px rgba(0,0,0,0.5), inset 0 1px 0 rgba(255,255,255,0.1);
+            transition: all 0.2s;
+        }
+
+        .game-card:hover {
+            border-color: #00d4ff;
+            transform: translateY(-5px);
+            background: linear-gradient(to bottom, #444 0%, #222 100%);
+            box-shadow: 0 0 20px rgba(0, 212, 255, 0.4);
+        }
+
+        .game-card img {
+            width: 150px;
+            height: 110px;
+            object-fit: cover;
+            border: 3px solid #000;
+            border-radius: 5px;
+            box-shadow: 0 0 5px rgba(0,0,0,0.8);
+        }
+
+        .game-card p {
+            margin: 12px 0 5px 0;
+            font-size: 13px;
+            font-weight: bold;
+            color: #fff;
+            height: 34px;
+            overflow: hidden;
+            text-shadow: 1px 1px 2px #000;
+        }
+
+        footer {
+            text-align: center;
+            font-size: 11px;
+            color: #666;
+            margin-top: 60px;
+            padding-bottom: 30px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        hr {
+            border: 0;
+            height: 1px;
+            background: linear-gradient(to right, #00d4ff, transparent);
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="request-banner">
+     REQUEST MOVIES FOR THE MEDIA SECTION HERE! <a href="https://docs.google.com/forms/d/e/1FAIpQLSfqg7uSuEWUgfU2Ibgg052fzE2PipnTyNxTNiIXSyCaefedSg/viewform?usp=publish-editor" target="_blank">CLICK HERE TO OPEN THE FORM</a>
+</div>
+
+<header>
+    <h1>Elijah Movies</h1>
+</header>
+
+<nav>
+    <a href="#">HOME</a> <span style="color:#444">|</span> 
+    <a href="#">ACTION</a> <span style="color:#444">|</span> 
+    <a href="#">PUZZLE</a> <span style="color:#444">|</span> 
+    <a href="#">HORROR</a> <span style="color:#444">|</span> 
+    <a href="#">MULTIPLAYER</a>
+</nav>
+
+<div class="container">
+    <div class="sidebar-ad">>>> ADVERTISEMENT:SOON <<<</div>
+    
+    <h2>Movies</h2>
+    <hr>
+    
+    <div class="game-grid">
+        <div class="game-card">
+            <a href="Five Nights at Freddy's 2.html" style="text-decoration: none;">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRGJxZMpB8fmub2CPwYelCkhjO8yyJskp86xQ&s" alt="Five Nights At Freddys 2">
+                <p>Five Nights At Freddys 2</p>
+            </a>
+        </div>
+        
+        
+        <div class="game-card">
+            <a href="Granny (1).html" style="text-decoration: none;">
+                <img src="https://play-lh.googleusercontent.com/yT_LBq_tyKeIDohKDsqN_Qt18jGIPUYIxY2C-1-E2YA9Qd60uZW08pua17qBmIiDPA=w240-h480-rw" alt="grane">
+                <p>Granny</p>
+            </a>
+        </div>
+
+        <div class="game-card">
+            <a href="projects/baldis-basics/index.html" style="text-decoration: none;">
+                <img src="https://play-lh.googleusercontent.com/EPV1TB4So1lB0DGrdCVExDpNU8ML67nd8OqBeoOIM-s6sDicxmDdPvCXD6n7LKevFl0" alt="Baldi's Basics">
+                <p>Baldi's Basics</p>
+            </a>
+        </div>
+            
+            <div class="game-card">
+            <a href="CaseOh's Basics in Eating and Fast Food.html" style="text-decoration: none;">
+                <img src="https://cdn.jsdelivr.net/gh/freebuisness/covers@main/758.png" alt="Baldi's Basics">
+                <p>CaseOh's Basics in Eating and Fast Food</p>
+            </a>
+        </div>
+            
+            <div class="game-card">
+            <a href="Five Night's at Shrek's Hotel.html" style="text-decoration: none;">
+                <img src="https://i.chzbgr.com/original/40719109/hD3084D1A/hilarious-ai-generated-photos-fake-facebook-emotional-bait-ai-photo-scams-ai-slop-meme-collection" alt="caseog's Basics">
+                <p>T LOVES SHREK</p>
+            </a>
+        </div>
+            
+            <div class="game-card">
+            <a href="Basket Bros.html" style="text-decoration: none;">
+                <img src="https://cdn.jsdelivr.net/gh/freebuisness/covers@main/285.png" alt="caseog's Basics">
+                <p>BasketBros</p>
+            </a>
+        </div>
+        
+        <div class="game-card">
+            <a href="Time Shooter 2.html" style="text-decoration: none;">
+                <img src="https://cdn.jsdelivr.net/gh/freebuisness/covers@main/200.png" alt="caseog's Basics">
+                <p>Time Shooter 2</p>
+            </a>
+        </div>
+            
+            <div class="game-card">
+            <a href="Boxing Random.html" style="text-decoration: none;">
+                <img src="https://cdn.jsdelivr.net/gh/freebuisness/covers@main/66.png" alt="caseog's Basics">
+                <p>Basket Random</p>
+            </a>
+        </div>
+            
+            <div class="game-card">
+            <a href="Retro Bowl.html" style="text-decoration: none;">
+                <img src="https://cdn.jsdelivr.net/gh/freebuisness/covers@main/33.png" alt="caseog's Basics">
+                <p>Retro Bowl</p>
+            </a>
+        </div>
+            
+            <div class="game-card">
+            <a href="projects/henrystickmin/index.html" style="text-decoration: none;">
+                <img src="https://img.poki-cdn.com/cdn-cgi/image/q=78,scq=50,width=1200,height=1200,fit=cover,f=png/0f80f3388aabb6153981b749df08c7fc6048d5234a40e9e88d7afc73178b451e/breaking-the-bank-logo.png" alt="caseog's Basics">
+                <p>Breaking The Bank</p>
+            </a>
+        </div>
+        
+        <div class="game-card">
+            <a href="Boxing Random.html" style="text-decoration: none;">
+                <img src="https://cdn.jsdelivr.net/gh/freebuisness/covers@main/77.png" alt="caseog's Basics">
+                <p>Boxing Random</p>
+            </a>
+        </div>
+            
+            <div class="game-card">
+            <a href="projects/henryprison/index.html" style="text-decoration: none;">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSgGlM4aYmjvfTGgiqkOzlp2nXVCf8qPipunw&s" alt="caseog's Basics">
+                <p>Escaping The Prison</p>
+            </a>
+        </div>
+            
+            <div class="game-card">
+            <a href="projects/bopcity/index.html" style="text-decoration: none;">
+                <img src="https://cdn.jsdelivr.net/gh/freebuisness/covers@main/497.png" alt="caseog's Basics">
+                <p>....Bopcity</p>
+            </a>
+        </div>
+            
+            <div class="game-card">
+            <a href="projects/cashoh/index.html" style="text-decoration: none;">
+                <img src="https://cdn.jsdelivr.net/gh/freebuisness/covers@main/758.png" alt="caseog's Basics">
+                <p>CaseOh's Basics in Eating and Fast Food</p>
+            </a>
+        </div>
+            
+            <div class="game-card">
+            <a href="projects/fnfsky/index.html" style="text-decoration: none;">
+                <img src="https://cdn.jsdelivr.net/gh/freebuisness/covers@main/556.png" alt="caseog's Basics">
+                <p>Friday Night Funkin - Sky Mod</p>
+            </a>
+        </div>
+        
+        <div class="game-card">
+            <a href="projects/drift-boss/index.html" style="text-decoration: none;">
+                <img src="https://m.media-amazon.com/images/I/71Rvyj1gI1L.png" alt="drift boss">
+                <p>Drift Boss</p>
+            </a>
+        </div>
+        
+        <div class="game-card">
+            <a href="Friday Night Funkin'_ TWIDDLEFINGER.html" style="text-decoration: none;">
+                <img src="https://cdn.jsdelivr.net/gh/freebuisness/covers@main/500.png" alt="drift boss">
+                <p>Twiddlefinger</p>
+            </a>
+        </div>
+            
+             <div class="game-card">
+            <a href="projects/subway-surfers-unity/index.html" style="text-decoration: none;">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRv4pVrJfZ_EjyKgawXBKMBrKeMUwJKaebYaw&s" alt="drift boss">
+                <p>Subway Surfers</p>
+            </a>
+        </div>
+            
+            <div class="game-card">
+            <a href="Friday Night Funkin.html" style="text-decoration: none;">
+                <img src="https://external-preview.redd.it/friday-night-funkin-for-the-phone-is-coming-in-3-v0-ywerRTxfJlAE3F0zBhSf7Fmm3ApynlXc4oxl8temPgM.png?auto=webp&s=d11b22b9da97d5d7d8c47db24d5506322f77a479" alt="drift boss">
+                <p>Friday Night Funkin</p>
+            </a>
+        </div>
+        
+        <div class="game-card">
+            <a href="projects/p" style="text-decoration: none;">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS_p_VpIc58Jo0Oi6hfv7Hc8Jl66nfkzBZAqg&s" alt="drift boss">
+                <p>PolyTrack</p>
+            </a>
+        </div>
+            
+            <div class="game-card">
+            <a href="Geometry Dash (1).html" style="text-decoration: none;">
+                <img src="https://cdn.jsdelivr.net/gh/freebuisness/covers@main/785.png" alt="drift boss">
+                <p>Geometry Dash</p>
+            </a>
+        </div>
+        
+        <div class="game-card">
+            <a href="bitlife/index.html" style="text-decoration: none;">
+                <img src="https://play-lh.googleusercontent.com/fUM-UyywXxjC8soxAZdIlxJrlRRXmql8wkE426SHzft4lJycSKVd2jCYQQX1BEG9Xw" alt="drift boss">
+                <p>Bitlife</p>
+            </a>
+        </div>
+        
+        <div class="game-card">
+            <a href="Minecraft 1.12.2.html" style="text-decoration: none;">
+                <img src="https://cdn2.steamgriddb.com/icon/6c98d8dcc54fbe460976496b08d838f6.png" alt="drift boss">
+                <p>MineCraft</p>
+            </a>
+        </div>
+        
+        <div class="game-card">
+            <a href="projects/fnaf-3/index.html" style="text-decoration: none;">
+                <img src="https://preview.redd.it/fnaf-3-icon-recreation-updated-2-v0-w91fgs2n6pa01.png?width=640&crop=smart&auto=webp&s=69084097c278503c7abe5160c24219fbe4fc6027" alt="drift boss">
+                <p>Five Nights At Freddy's 3</p>
+            </a>
+        </div>
+            
+            <div class="game-card">
+            <a href="Sonic.EXE (ORIGINAL).html" style="text-decoration: none;">
+                <img src="https://cdn.jsdelivr.net/gh/freebuisness/covers@main/606.png" alt="drift boss">
+                <p>Sonic.EXE</p>
+            </a>
+        </div>
+        
+        <div class="game-card">
+            <a href="projects/slope/index.html" style="text-decoration: none;">
+                <img src="https://play-lh.googleusercontent.com/uJn2i9h7KxYQarC_c3K4qH6o7gLtflFnhD_dN14MNkzHJ1NeNFzCL69jpB5mT0vCoQs" alt="drift boss">
+                <p>Slope</p>
+            </a>
+        </div>
+            
+            <div class="game-card">
+            <a href="Time Shooter 1.html" style="text-decoration: none;">
+                <img src="https://cdn.jsdelivr.net/gh/freebuisness/covers@main/199.png" alt="drift boss">
+                <p>Time Shooter 1</p>
+            </a>
+        </div>
+        
+        <div class="game-card">
+            <a href="projects/hw/index.html" style="text-decoration: none;">
+                <img src="https://cdn2.steamgriddb.com/icon_thumb/0f0ee3310223fe38a989b2c818709393.png" alt="drift boss">
+                <p>Happy Wheels</p>
+            </a>
+        </div>
+        
+        <div class="game-card">
+            <a href="Friday Night Funkin'_ Mario's Madness.html" style="text-decoration: none;">
+                <img src="https://cdn.jsdelivr.net/gh/freebuisness/covers@main/582.png" alt="drift boss">
+                <p>FNF - Mario's Madness</p>
+            </a>
+        </div>
+        
+        <div class="game-card">
+            <a href="projects/crazy-cattle-3d/index.html" style="text-decoration: none;">
+                <img src="https://img02.symbaloo.com/XPUEyvCMeHSBnj1zo3b3Dw6a9YE=/0x7:245x252/fit-in/522x342/filters:no_upscale()/smarkImages%2Fv1%2Fd1%2Fd5%2F1cbad2544788a399975998b6a3afd8fbb336704132e64cd00edee0355012.png" alt="drift boss">
+                <p>Crazy Cattle 3D</p>
+            </a>
+        </div>
+        
+        <div class="game-card">
+            <a href="pacyman.html" style="text-decoration: none;">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQqBsd5KR0IgKULgvVX5TruqpG_gZjT2SLPGg&s" alt="drift boss">
+                <p>Pacman</p>
+            </a>
+        </div>
+
+        <div class="game-card" style="opacity: 0.4; filter: grayscale(1);">
+            <div style="width: 150px; height: 110px; background: #000; margin: auto; border: 3px solid #111; display: flex; align-items: center; justify-content: center;">
+                <span style="font-size: 10px; color: #444;">NO IMAGE</span>
+            </div>
+            <p>Coming Soon...</p>
+        </div>
+    </div>
+</div>
+
+<footer>
+    &copy; 2026 E GAMES by Elijah.
+</footer>
+
+</body>
+</html>
